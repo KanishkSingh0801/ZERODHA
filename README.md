@@ -8,4 +8,4 @@ Database: - MongoDB
 Testing framework: - JEST
 Deployment: - AWS Amplify
 
-##About Zerodha:- [https://www.notion.so/Zerodha-information-1fc81989c52280448a62d21b22d742a0?pvs=4]
+## About Zerodha:- About[https://www.notion.so/Zerodha-information-1fc81989c52280448a62d21b22d742a0?pvs=4]
