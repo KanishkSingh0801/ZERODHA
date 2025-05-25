@@ -4,7 +4,7 @@ function Awards() {
   return (
     <div className="container mt-5 mb-5">
       <div className="row">
-        <div className="col-6 p-5">
+        <div className="col-lg-6 col-md-12 p-5">
           <img src="media\images\largestBroker.svg"></img>
         </div>
         <div className="col-6 p-5 mt-5">
