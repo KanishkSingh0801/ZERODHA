@@ -48,6 +48,7 @@ function ProductPage() {
         googlePlay=""
         appStore=""
       />
+      <p className="text-muted text-center mt-5 mb-5">Want to know mor about our technology stack? Check out the <a href="" style = {{textDecoration:"none"}}>Zerodha tech</a> blog.</p>
       <Universe />
     </div>
   );
