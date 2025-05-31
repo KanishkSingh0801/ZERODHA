@@ -4,7 +4,7 @@ function OpenAccount() {
   return (
     <div className="container p-5 mb-5">
       <div className="row text-center">
-        <h1 className="mt-5">Invest in Everything</h1>
+        <h1 className="mt-5">Open a Zerodha Account</h1>
         <p>
           Modern platforms and apps, &#8377;0 investments, and flat &#8377;20 intraday and F&O trades.
         </p>
