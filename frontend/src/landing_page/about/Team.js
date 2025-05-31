@@ -3,23 +3,27 @@ import React from "react";
 function Team() {
   return (
     <div className="container">
-      <div className="row p-3 mt-5  border-top">
-        <h1 className=" mt-5 text-center">People</h1>
+      <div className="row px-3 mt-5 border-top">
+        <h1 className="mt-5 text-center">People</h1>
       </div>
       <div
-        className="row p-3 mb-5"
-        style={{ lineHeight: "1.5", fontSize: "1em" }}
+        className="row px-3 mb-5 align-items-center"
+        style={{ lineHeight: "1.6", fontSize: "1em" }}
       >
-        <div className="col-lg-6 col-md-12 text-muted fs-8 p-3 text-center">
+        {/* Image and Name Section */}
+        <div className="col-lg-6 col-md-12 text-muted p-3 text-center">
           <img
             src="media/images/nithinKamath.jpg"
-            style={{ borderRadius: "100%", width: "50%" }}
-          ></img>
-          <h4 className="mt-5">Nithin Kamath</h4>
+            className="img-fluid"
+            style={{ borderRadius: "100%", maxWidth: "250px" }}
+            alt="Nithin Kamath"
+          />
+          <h4 className="mt-4">Nithin Kamath</h4>
           <h6>Founder, CEO</h6>
         </div>
 
-        <div className="col-lg-6 col-md-12 text-muted fs-8 p-5">
+        {/* Text Content Section */}
+        <div className="col-lg-6 col-md-12 text-muted p-3">
           <p>
             Nithin bootstrapped and founded Zerodha in 2010 to overcome the
             hurdles he faced during his decade long stint as a trader. Today,
@@ -29,20 +33,21 @@ function Team() {
             He is a member of the SEBI Secondary Market Advisory Committee
             (SMAC) and the Market Data Advisory Committee (MDAC).
           </p>
-          <p>Playing basketball is his zen. </p>
+          <p>Playing basketball is his zen.</p>
           <p>
             Connect on{" "}
-            <a href="" style={{ textDecoration: "none" }}>
+            <a href="#" style={{ textDecoration: "none" }}>
               Homepage
             </a>{" "}
             /{" "}
-            <a href="" style={{ textDecoration: "none" }}>
+            <a href="#" style={{ textDecoration: "none" }}>
               TradingQnA
             </a>{" "}
             /{" "}
-            <a href="" style={{ textDecoration: "none" }}>
-              Twitter.
-            </a>{" "}
+            <a href="#" style={{ textDecoration: "none" }}>
+              Twitter
+            </a>
+            .
           </p>
         </div>
       </div>

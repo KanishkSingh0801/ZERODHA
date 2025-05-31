@@ -25,3 +25,38 @@ code {
   color: #666666;
   font-size: 14px;
 }
+
+#supportHero{
+  background-color: rgb(56, 126, 209);
+  color: white;
+  
+}
+
+#supportHero a {
+  color: white;
+  margin-left: 8px;
+}
+#supportWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 120px;
+}
+
+#supportHero input {
+  padding: 20px 50px;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+}
+
+/* #leftSupportHero {
+  /* margin-right: 50px; 
+} */
+
+#supportSecondRow {
+  margin: 0 120px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
