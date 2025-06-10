@@ -3,13 +3,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const { MONGO_URL } = process.env;
+const authRoute = require("./Routes/AuthRoute");
 
 const { HoldingModel } = require("./models/HoldingModel");
 const { PositionModel } = require("./models/PositionModel");
-const {OrderModel} = require("./models/OrderModel");
+const { OrderModel } = require("./models/OrderModel");
 
 const PORT = process.env.PORT || 3002;
-const uri = process.env.MONGO_URL;
 const app = express(); //For creating a new application
 
 app.use(cors());
@@ -184,38 +186,57 @@ app.use(bodyParser.json());
 //   res.send("Successfully added Positions in DB");
 // });
 
-app.get("/allHoldings", async(req, res) => {
-    let allHoldings = await HoldingModel.find({});
-    res.json(allHoldings);
+app.get("/allHoldings", async (req, res) => {
+  let allHoldings = await HoldingModel.find({});
+  res.json(allHoldings);
 });
 
-app.get("/allPositions", async(req, res) => {
-    let allPositions = await PositionModel.find({});
-    res.json(allPositions);
+app.get("/allPositions", async (req, res) => {
+  let allPositions = await PositionModel.find({});
+  res.json(allPositions);
 });
 
-app.get("/allOrders", async(req, res) => {
-    let allOrders = await OrderModel.find({});
-    res.json(allOrders);
+app.get("/allOrders", async (req, res) => {
+  let allOrders = await OrderModel.find({});
+  res.json(allOrders);
 });
 
-app.post("/newOrder", async(req, res) =>{ //API to include new Order
-    let newOrder = new OrderModel({
-        name : req.body.name,
-        price : req.body.price,
-        qty : req.body.qty,
-        mode : req.body.mode,
-    });
+app.post("/newOrder", async (req, res) => {
+  //API to include new Order
+  let newOrder = new OrderModel({
+    name: req.body.name,
+    price: req.body.price,
+    qty: req.body.qty,
+    mode: req.body.mode,
+  });
 
-    newOrder.save();
+  newOrder.save();
 
-    res.send("Order saved");
-})
+  res.send("Order saved");
+});
+
+mongoose
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => console.error(err));
 
 app.listen(PORT, () => {
-  console.log("Backend server is running on port 3002");
-  mongoose.connect(uri);
-  console.log("Connection established with DB");
+  console.log(`Backend server is running on port ${PORT}`);
 });
 
+app.use(
+    cors({
+        origin : ["http://localhost:3000"],
+        methods : ["GET", "POST", "PUT", "DELETE"],
+        credentials : true,
+    })
+);
 
+app.use(cookieParser());
+app.use(express.json());
+app.use("/", authRoute);
