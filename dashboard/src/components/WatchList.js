@@ -4,11 +4,43 @@ import { watchlist } from "../data/data";
 
 import GeneralContext from "./GeneralContext";
 
-import { KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from "@mui/icons-material";
+import {
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  Label,
+  MoreHoriz,
+} from "@mui/icons-material";
 import { BarChartOutlined } from "@mui/icons-material";
+import { DoughnutChart } from "./DoughnutChart";
 
-
+const labels = watchlist.map((subArray) => subArray["name"]);
 const WatchList = () => {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Price",
+        data: watchlist.map((stock) => stock.price),
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(153, 102, 255, 0.5)",
+          "rgba(255, 159, 64, 0.5)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
     <div className="watchlist-container">
       <div className="search-container">
@@ -28,6 +60,7 @@ const WatchList = () => {
         })}
         ;
       </ul>
+      <DoughnutChart data={data} />
     </div>
   );
 };
@@ -61,7 +94,9 @@ const WatchListItem = ({ stock }) => {
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchLustActions && <WatchListActions uid={stock.name}></WatchListActions>}
+      {showWatchLustActions && (
+        <WatchListActions uid={stock.name}></WatchListActions>
+      )}
     </li>
   );
 };
@@ -74,7 +109,7 @@ const WatchListActions = ({ uid }) => {
   };
   return (
     <span className="actions">
-      <span style = {{display:"flex"}}>
+      <span style={{ display: "flex" }}>
         <Tooltip
           title="Buy (B)"
           placement="top"
@@ -98,17 +133,13 @@ const WatchListActions = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="action"><BarChartOutlined className = "icon" /></button>
-          
-        </Tooltip>
-        <Tooltip
-          title="More"
-          placement="top"
-          arrow
-          TransitionComponent={Grow}
-        >
           <button className="action">
-            <MoreHoriz className = "icon"/>
+            <BarChartOutlined className="icon" />
+          </button>
+        </Tooltip>
+        <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
+          <button className="action">
+            <MoreHoriz className="icon" />
           </button>
         </Tooltip>
       </span>
